@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="build/css/screen.min.css" />
+    <script type="text/javascript" src="build/bundle.min.js"></script>
+</head>
+<body ng-app="twitterApp">
+    <div class="container" ng-controller="mainController">
+        <div class="jumbotron">
+            <h1>Tweet watcher</h1>
+            <button ng-class="{'active' : editMode}"ng-click="editMode = !editMode" class="btn btn-{{skin}}">Edit config</button>
+        </div>
+        <div ng-show="editMode" class="panel panel-{{skin}}">
+            <div class="panel-heading">
+                <h3 class="panel-title">Config</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" ng-show="!settingsEnabled">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger">This browser does not support saving your configuration. All settings will be lost if you leave this page.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" ng-repeat="user in users">
+                        <h3>{{user.user}}</h3>
+                       <div class="form-group">
+                           <label class="control-label" for="">column position</label>
+                             <input class="form-control" min="1" max="3" type="number" ng-model="user.index">
+
+                          </div>
+
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Choose color scheme</h3>
+                        <div class="btn-group">
+                            <label class="btn btn-default" ng-model="skin" btn-radio="'default'">default</label>
+                            <label class="btn btn-primary" ng-model="skin" btn-radio="'primary'">blue</label>
+                            <label class="btn btn-warning" ng-model="skin" btn-radio="'warning'">orange</label>
+                            <label class="btn btn-success" ng-model="skin" btn-radio="'success'">green</label>
+                        </div>                
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                      <div class="pull-right">
+                          <button ng-click="updateSettings()" class="btn btn-{{skin}}" ng-disabled="!settingsEnabled">save</button>
+                      
+                      </div>
+                    
+                    </div>
+                </div>
+                
+              </div>
+            </div>
+        <div class="panel panel-{{skin}}">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Tweets</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" >
+                    <div ng-repeat="user in users | orderBy:'index'" class="col-md-4">
+
+                    
+                       <div class="form-group" ng-show="editMode">
+                           <label class="control-label" for="">Number of tweets showing</label>
+                             <input class="form-control" type="text" ng-model="user.count">
+
+                          </div>
+
+                          <div data-drop="true" jqyoui-droppable>
+                                <recent-tweets class="recent-tweets" source="user"></recent-tweets>
+                          
+                          </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<div>
+<div class="list-group" ng-repeat="tweet in tweets">
+    <a class="list-group-item" href="{{tweet.url}}" target="_blank">
+        <h4 class="list-group-heading">{{tweet.user}}</h4>
+            <div class="list-group-item-text">{{tweet.content}}</div>
+            <div class="list-group-item-text">{{tweet.creationDate}}</div>
+    </a>
+</div>
+</div>
