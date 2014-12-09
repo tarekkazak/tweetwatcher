@@ -23,11 +23,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4" ng-repeat="user in users">
+                    <div class="col-md-4" ng-repeat="user in users | orderBy:'index'">
                         <h3>{{user.user}}</h3>
                        <div class="form-group">
-                           <label class="control-label" for="">column position</label>
-                             <input class="form-control" min="1" max="3" type="number" ng-model="user.index">
+                           <div class="btn-group">
+                                <button class="btn btn-{{skin}}" ng-click="pushLeft()">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>
+                                </button>
+                                <button class="btn btn-{{skin}}"  ng-click="pushRight()">
+                                    <span class="glyphicon glyphicon-arrow-right"></span>
+                                </button>
+                            </div>
 
                           </div>
 
@@ -71,10 +77,8 @@
 
                           </div>
 
-                          <div data-drop="true" jqyoui-droppable>
                                 <recent-tweets class="recent-tweets" source="user"></recent-tweets>
                           
-                          </div>
                     </div>
                 </div>
 
