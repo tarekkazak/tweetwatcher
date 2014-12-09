@@ -1,5 +1,5 @@
 angular.module('twitterApp.directives')
-    .directive('recentTweets', [function() {
+    .directive('recentTweets', function() {
         return {
             restrict : 'E',
             scope : {
@@ -21,4 +21,4 @@ angular.module('twitterApp.directives')
             }
 
         };
-    }]);
+    });

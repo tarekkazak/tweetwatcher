@@ -33,7 +33,6 @@ app.get('/tweets/:user', function(req, res, next) {
 
     getTweetsForUser(req.params.user).then(function(result) {
         res.json(result);
-        console.log('resolve');
     });
 });
 
