@@ -51,7 +51,8 @@ module.exports = function(grunt) {
             dev : {
                 files : {'bundle.js' : ['main.js']},
                 options : {
-                    watch : true
+                    watch : true,
+                    keepAlive : true
 
                 }
             }
