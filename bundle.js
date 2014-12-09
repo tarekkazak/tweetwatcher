@@ -44,6 +44,7 @@ angular.module('twitterApp.controllers')
             });
             return parsed;
         };
+        
         $q.all([
            tweetService.get('/tweets/laughingsquid').then(function(data) {
                 laughingSquid.tweets =  me.parseTweets(data); 
@@ -65,11 +66,45 @@ angular.module('twitterApp.controllers')
             settings.store(currentSettings);
             $scope.editMode = false;
        };
+       
+       
+       $scope.pushLeft = function(index) {
+           var user,
+               l = $scope.users.length,
+               i = 0;
+                
+            while(i < l) {
+                user = $scope.users[i];
+                if(user.index === 1) {
+                    user.index = 3;
+                } else {
+                    user.index--;
+                }
+                i++;
+            }
+       };
+       
+       $scope.pushRight = function() {
+           var user,
+               l = $scope.users.length,
+               i = 0;
+                
+            while(i < l) {
+                user = $scope.users[i];
+                if(user.index === 3) {
+                    user.index = 1;
+                } else {
+                    user.index++;
+                }
+                i++;
+            }
+       };
+       
     }]);
 
 },{}],3:[function(require,module,exports){
 angular.module('twitterApp.directives')
-    .directive('recentTweets', [function() {
+    .directive('recentTweets', function() {
         return {
             restrict : 'E',
             scope : {
@@ -91,7 +126,7 @@ angular.module('twitterApp.directives')
             }
 
         };
-    }]);
+    });
 
 },{}],4:[function(require,module,exports){
 angular.module('twitterApp.model')
