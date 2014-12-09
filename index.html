@@ -23,8 +23,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4" ng-repeat="user in users | orderBy:'index'">
-                        <h3>{{user.user}}</h3>
+                    <div class="col-md-12">
+                        <h3>Choose color scheme</h3>
+                        <div class="btn-group">
+                            <label class="btn btn-default" ng-model="skin" btn-radio="'default'">default</label>
+                            <label class="btn btn-primary" ng-model="skin" btn-radio="'primary'">blue</label>
+                            <label class="btn btn-warning" ng-model="skin" btn-radio="'warning'">orange</label>
+                            <label class="btn btn-success" ng-model="skin" btn-radio="'success'">green</label>
+                        </div>                
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Move columns</h3>
                        <div class="form-group">
                            <div class="btn-group">
                                 <button class="btn btn-{{skin}}" ng-click="pushLeft()">
@@ -38,17 +49,6 @@
                           </div>
 
                       </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>Choose color scheme</h3>
-                        <div class="btn-group">
-                            <label class="btn btn-default" ng-model="skin" btn-radio="'default'">default</label>
-                            <label class="btn btn-primary" ng-model="skin" btn-radio="'primary'">blue</label>
-                            <label class="btn btn-warning" ng-model="skin" btn-radio="'warning'">orange</label>
-                            <label class="btn btn-success" ng-model="skin" btn-radio="'success'">green</label>
-                        </div>                
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -70,7 +70,7 @@
                 <div class="row" >
                     <div ng-repeat="user in users | orderBy:'index'" class="col-md-4">
 
-                    
+                        <h3>{{user.user}}</h3> 
                        <div class="form-group" ng-show="editMode">
                            <label class="control-label" for="">Number of tweets showing</label>
                              <input class="form-control" type="text" ng-model="user.count">
