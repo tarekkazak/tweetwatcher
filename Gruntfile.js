@@ -1,5 +1,17 @@
 module.exports = function(grunt) {
     grunt.initConfig( {
+        copy : {
+            dist : {
+                files: [
+                {
+                    cwd : 'resources',
+                    expand : true, 
+                    src : ['fonts/**'], 
+                    dest : 'build/'
+                 }
+               ]
+            }
+        },
         compass : {
             dist : {
                 options: {
@@ -50,6 +62,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.registerTask('dist', ['compass:dist', 'browserify:dist', 'cssmin:dist', 'uglify:dist']);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.registerTask('dist', ['compass:dist', 'browserify:dist', 'copy:dist', 'cssmin:dist', 'uglify:dist']);
 
 };
