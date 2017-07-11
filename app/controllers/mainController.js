@@ -1,3 +1,6 @@
+// Hi Tarek,
+// Let's go through this file and see how your JavaScript perspective may have changed over the last 3 years! 
+
 angular.module('twitterApp.controllers')
     .controller('mainController', ['$scope', 'settings', '$filter', 'tweetService', 'twitterUser', '$q', function($scope, settings, $filter, tweetService, TwitterUser, $q) {
         var me = this,
